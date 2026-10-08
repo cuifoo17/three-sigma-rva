@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #f7f5f0;
+  --color-surface: #ffffff;
+  --color-primary: #0b1f3a;
+  --color-accent: #8ecae6;
+  --color-yellow: #ffc845;
+  --font-sans: var(--font-instrument-sans);
+  --spacing-safe-top: env(safe-area-inset-top);
+  --spacing-safe-bottom: env(safe-area-inset-bottom);
+  --spacing-touch: 2.75rem;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Card deck (/deck): one screen per card, every swipe lands on the next card.
+   Snap lives on the root scroller so iOS keeps collapsing its address bar. */
+html:has([data-deck]) {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 0;
+  /* Anchor jumps are instant here: iOS Safari's smooth scroll gets caught by
+     the mandatory snap and stops on the next card instead of the target. */
+  scroll-behavior: auto;
+}
+html:has([data-deck="glass"]) header {
+  background: color-mix(in srgb, var(--color-background) 70%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@keyframes deck-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-3%, 2%, 0) scale(1.08); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+.deck-drift {
+  animation: deck-drift 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-primary);
+}
