@@ -23,7 +23,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      # npm install, not npm ci: a lock written on macOS omits a couple of
+      # Linux-only optional packages, and ci refuses to run when it sees that.
+      - run: npm install --no-audit --no-fund
       # Served at user.github.io/<repo>, so the site is built under that path.
       - run: npm run build
         env:
