@@ -9,7 +9,16 @@ export default function EnrollScreen() {
     <Reveal>
       <ScreenTitle>{enrolling.header}</ScreenTitle>
       <p className="mt-2 text-base text-background/75 md:text-lg">
-        {enrolling.sub}
+        {enrolling.sub.before}
+        <a
+          href={enrolling.sub.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline decoration-background/40 underline-offset-4 hover:text-background"
+        >
+          {enrolling.sub.address}
+        </a>
+        {enrolling.sub.after}
       </p>
 
       {/* Four columns fit a phone without sideways scroll; the wrapper
