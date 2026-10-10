@@ -95,12 +95,13 @@ export const enrolling = {
     { days: "Fri + Sat", time: "Fri 5:00, Sat 10:00", dates: "Nov 13 to Dec 19", seats: 10 },
   ],
   faq: [
-    "60 minutes, twice a week, five weeks.",
-    "No coding background needed.",
-    "Missed a class? Sunday make-ups.",
-    "$1,000 for the ten sessions.",
-    "Every student is screened. We'll go over what we look for on the call.",
+    "1 hour classes held twice a week (off for Thanksgiving).",
+    "No coding experience needed.",
+    "Make-up classes on Sunday morning.",
+    "$1,000 for the five week course.",
+    "Every student is screened. I'll go over requirements on the call.",
   ],
+
 };
 
 export const deckFit = {
