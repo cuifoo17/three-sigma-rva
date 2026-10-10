@@ -44,7 +44,7 @@ export default function EnrollScreen() {
                 <td className="py-3 pr-3 whitespace-nowrap">{c.dates}</td>
                 <td className="py-3 text-right">
                   <span className="inline-block min-w-8 rounded-full bg-yellow px-2.5 py-0.5 text-center text-sm font-bold text-primary">
-                    {c.seats}
+                    {c.seats}/{enrolling.capacity}
                   </span>
                 </td>
               </tr>

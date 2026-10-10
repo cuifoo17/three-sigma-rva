@@ -95,9 +95,11 @@ export const enrolling = {
     after: ".",
   },
   columns: ["Days", "Time", "Dates", "Seats left"],
+  // Pill reads "seats/capacity", e.g. 5/5.
+  capacity: 5,
   cohorts: [
-    { days: "Mon + Wed", time: "5:00 to 6:00", dates: "Nov 9 to Dec 16", seats: 10 },
-    { days: "Tue + Thu", time: "5:00 to 6:00", dates: "Nov 10 to Dec 15", seats: 10 },
+    { days: "Mon + Wed", time: "5:00 to 6:00", dates: "Nov 9 to Dec 16", seats: 5 },
+    { days: "Tue + Thu", time: "5:00 to 6:00", dates: "Nov 10 to Dec 15", seats: 5 },
   ],
   faq: [
     "1 hour classes held twice a week (off for Thanksgiving).",
