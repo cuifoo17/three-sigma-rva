@@ -87,7 +87,7 @@ export const deckLogistics = {
 // Seats are hand-edited until enrollment moves to a database.
 export const enrolling = {
   header: "Now enrolling for Nov 10",
-  sub: "Group classes held at 201 W 7th St. No coding experience necessary.",
+  sub: "Small group classes held twice a week at 201 W 7th St.",
   columns: ["Days", "Time", "Dates", "Seats left"],
   cohorts: [
     { days: "Mon + Wed", time: "5:00 to 6:00", dates: "Nov 9 to Dec 16", seats: 10 },
