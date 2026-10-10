@@ -3,11 +3,6 @@
 
 export const nav = {
   wordmark: "Three Sigma",
-  links: [
-    { label: "What they'll learn", href: "#learn" },
-    { label: "Logistics", href: "#logistics" },
-    { label: "About", href: "#about" },
-  ],
   cta: { label: "Book a free call", href: "#book" },
 };
 
