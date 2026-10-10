@@ -103,7 +103,7 @@ export const enrolling = {
   faq: [
     "1 hour classes held twice a week (off for Thanksgiving).",
     "No coding experience needed.",
-    "Make-up classes on Sunday morning.",
+    "Small classes of gifted students (Max 5 students per class).",
     "$1,000 for the five week course.",
     "Every student is screened. I'll go over requirements on the call.",
   ],
