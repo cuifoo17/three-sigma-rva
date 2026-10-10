@@ -98,7 +98,6 @@ export const enrolling = {
   cohorts: [
     { days: "Mon + Wed", time: "5:00 to 6:00", dates: "Nov 9 to Dec 16", seats: 10 },
     { days: "Tue + Thu", time: "5:00 to 6:00", dates: "Nov 10 to Dec 15", seats: 10 },
-    { days: "Fri + Sat", time: "Fri 5:00, Sat 10:00", dates: "Nov 13 to Dec 19", seats: 10 },
   ],
   faq: [
     "1 hour classes held twice a week (off for Thanksgiving).",
