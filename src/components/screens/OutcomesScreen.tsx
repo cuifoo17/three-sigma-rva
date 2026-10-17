@@ -3,20 +3,20 @@
 import { type Easing, motion, useInView, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useRef } from "react";
-import Rows from "@/components/Rows";
+import CourseCarousel from "@/components/screens/CourseCarousel";
 import { ScreenTitle } from "@/components/screens/Screen";
 import StreamWords from "@/components/screens/StreamWords";
 import { SLOW, easeOut, glide } from "@/components/screens/timing";
-import { deckOutcomes } from "@/content/deck";
+import { course, deckOutcomes } from "@/content/deck";
 import outcomesArt from "@/app/outcomes.png";
 
 // Timed sequence, started once when the screen scrolls into view:
 //   0.0s  title falls in from the top over 1.8s
 //   0.3s  art glides in from the left over 1.8s
-//   2.0s  subtitle (under the art) streams in one word at a time over 1s,
-//         0.1s before the art lands
-//   3.2s  0.2s after the subtitle finishes, cards slide in from the left over
-//         0.6s, each 0.1s after the one before it lands
+//   2.0s  "Course Contents" (under the art) streams in one word at a time
+//         over 1s, 0.1s before the art lands
+//   3.2s  0.2s after that finishes, the lesson carousel items slide in from
+//         the left over 0.6s, each 0.1s after the one before it lands
 // Reduced motion renders everything static.
 // 0.8s longer than the other screens' entrances.
 const ENTER = SLOW + 0.8;
@@ -68,23 +68,22 @@ export default function OutcomesScreen() {
           alt="A student at a laptop"
           loading="eager"
           decoding="async"
-          sizes="(min-width: 768px) 20rem, 15.5rem"
-          className="ml-auto mt-4 w-[8.8rem] object-contain md:mt-6 md:w-[11.3rem]"
+          sizes="(min-width: 768px) 9rem, 7rem"
+          className="ml-auto mt-4 w-[7rem] object-contain md:mt-6 md:w-[9rem]"
         />
       </motion.div>
-      <p className="mt-5 text-lg text-primary/70 md:text-xl">
+      <h3 className="mt-5 text-lg font-bold tracking-tight text-primary md:text-xl">
         <StreamWords
-          text={deckOutcomes.sub}
+          text={course.header}
           on={on}
           at={SUB_AT}
           dur={SUB_DUR}
           reduce={reduce}
         />
-      </p>
+      </h3>
       <div className="mt-3 md:mt-4">
-        <Rows
-          compact
-          rows={deckOutcomes.rows}
+        <CourseCarousel
+          lessons={course.lessons}
           enter={{ on, at: CARDS_AT, dur: CARD_DUR, gap: CARD_GAP }}
         />
       </div>

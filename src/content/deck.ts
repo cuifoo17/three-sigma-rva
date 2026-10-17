@@ -65,6 +65,55 @@ export const deckOutcomes = {
   ],
 };
 
+// Screens page only: the ten sessions, shown as a horizontal carousel under
+// "Course Contents" on the outcomes screen. Titles and bodies are the
+// founder's words.
+export const course = {
+  header: "Course Contents",
+  lessons: [
+    {
+      title: "Hello world",
+      body: "Teens make their first app, website, or game with one prompt. This will serve as the baseline that we improve upon for the rest of the course.",
+    },
+    {
+      title: "Tell me what I don't know",
+      body: "Students learn how to explore and understand unknown domains.",
+    },
+    {
+      title: "Hey Claude, let me teach you something",
+      body: "Students learn how to use Claude skills.",
+    },
+    {
+      title: "Sign in with Google",
+      body: "Students learn how to use CLIs to integrate live databases into their projects.",
+    },
+    {
+      title: "Padding, pills, and corner radii",
+      body: "Students learn the basics of UI.",
+    },
+    {
+      title: "Lights, camera, Opus",
+      body: "Students learn how to use Opus 5.5 to make detailed motion graphics and animations within their project.",
+    },
+    {
+      title: "Magnum Fable",
+      body: "Students are empowered to dream big and add one final new integration or feature to their project.",
+    },
+    {
+      title: "Less is more",
+      body: "Students are taught the value of restraint. Just because you can build an extra feature doesn't mean you should.",
+    },
+    {
+      title: "Demo Day",
+      body: "Students present their projects to the whole class, who give constructive feedback after testing it live.",
+    },
+    {
+      title: "To Sol and beyond",
+      body: "Students receive a lesson on the state of AI, all the tools we haven't covered in the class, and how to responsibly use AI on their own outside of the class.",
+    },
+  ],
+};
+
 export const deckLogistics = {
   header: "Logistics",
   rows: [
