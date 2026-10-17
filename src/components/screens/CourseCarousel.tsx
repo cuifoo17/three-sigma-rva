@@ -44,17 +44,19 @@ export default function CourseCarousel({
           // first; the padding either side of it keeps text off the line.
           className="w-[57.14%] shrink-0 snap-start border-l-2 border-black/15 px-4 first:border-l-0 first:pl-0 last:pr-0"
         >
+          {/* Big bare yellow numeral, no badge. */}
           <span
             aria-hidden="true"
-            className="flex size-10 items-center justify-center rounded-full bg-yellow text-lg font-bold text-primary"
+            className="block text-4xl leading-none font-bold text-yellow"
           >
             {i + 1}
           </span>
-          <p className="mt-3 text-base font-bold leading-snug tracking-tight text-primary">
+          {/* Title and body are 20% up from text-base / text-sm. */}
+          <p className="mt-2 text-[1.2rem] font-bold leading-tight tracking-tight text-primary">
             <span className="sr-only">{i + 1}. </span>
             {l.title}
           </p>
-          <p className="mt-1.5 text-sm leading-snug text-black/80">{l.body}</p>
+          <p className="mt-1 text-[1.05rem] leading-tight text-black/80">{l.body}</p>
         </motion.li>
       ))}
     </ol>

@@ -40,10 +40,9 @@ export default function OutcomesScreen() {
     // overflow-x-clip: the slide-ins start outside the column and must not
     // widen the page.
     <div ref={ref} className="-translate-y-2 overflow-x-clip">
-      {/* The top margin equals the height the 10%-smaller art gave up, so the
-          title drops into that gap and everything below stays put. */}
+      {/* No top margin: with the bigger Course Contents text the screen
+          needs every px on a 664px Safari viewport. */}
       <motion.div
-        className="mt-[21px] md:mt-[27px]"
         initial={{ opacity: 0, y: -40 }}
         animate={on ? { opacity: 1, y: 0 } : undefined}
         transition={t(TITLE_AT, ENTER, glide)}
@@ -69,10 +68,10 @@ export default function OutcomesScreen() {
           loading="eager"
           decoding="async"
           sizes="(min-width: 768px) 9rem, 7rem"
-          className="ml-auto mt-4 w-[7rem] object-contain md:mt-6 md:w-[9rem]"
+          className="ml-auto mt-2 w-[7rem] object-contain md:mt-6 md:w-[9rem]"
         />
       </motion.div>
-      <h3 className="mt-5 text-lg font-bold tracking-tight text-primary md:text-xl">
+      <h3 className="mt-3 text-xl font-bold tracking-tight text-primary md:text-2xl">
         <StreamWords
           text={course.header}
           on={on}
@@ -81,7 +80,7 @@ export default function OutcomesScreen() {
           reduce={reduce}
         />
       </h3>
-      <div className="mt-3 md:mt-4">
+      <div className="mt-2 md:mt-4">
         <CourseCarousel
           lessons={course.lessons}
           enter={{ on, at: CARDS_AT, dur: CARD_DUR, gap: CARD_GAP }}
