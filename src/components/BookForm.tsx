@@ -5,50 +5,49 @@ import Button from "@/components/Button";
 import { book } from "@/content/site";
 import { enrolling } from "@/content/deck";
 
-// Dummy form: the submit button appears once every required field is filled,
-// and submitting sends nothing yet; it just hands the values to onSubmit.
-// Names sit side by side at every width. Email and phone pair up from
-// tablet width and stack on phones, where half a screen is too narrow to
-// type an address into. Preferred days is optional, one tap.
+// The submit button appears once name, email and phone are filled; submitting
+// hands the values to onSubmit, which posts them to HQ. Email and phone pair
+// up from tablet width and stack on phones, where half a screen is too narrow
+// to type an address into. Times is multi-select, one tap each, optional.
 const fieldClass =
   "w-full rounded-xl border border-primary/15 bg-surface px-4 py-3 text-base text-primary placeholder:text-primary/40 focus:border-primary focus:outline-none md:text-sm";
 
 export type BookValues = {
-  parent: string;
-  child: string;
+  name: string;
   email: string;
   phone: string;
-  days: string;
-  background: string;
+  times: string[];
+  anything: string;
 };
 
 export default function BookForm({
   onSubmit,
   busy = false,
+  error = null,
 }: {
   onSubmit?: (values: BookValues) => void;
-  // Held in its pressed look while the page works (the book screen captures
-  // the section for its cube twist).
+  // Held in its pressed look while the page works (posting, then the book
+  // screen capturing the section for its cube twist).
   busy?: boolean;
+  // Shown under the button when the post failed; the form keeps its values.
+  error?: string | null;
 }) {
   const [values, setValues] = useState<BookValues>({
-    parent: "",
-    child: "",
+    name: "",
     email: "",
     phone: "",
-    days: "",
-    background: "",
+    times: [],
+    anything: "",
   });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- TODO(dev): drop with the line below
-  const complete = (["parent", "child", "email", "phone", "background"] as const).every(
-    (k) => values[k].trim().length > 0,
-  );
-  const ready = true; // TODO(dev): restore `complete` gate before launch (const ready = complete;)
+  const ready = (["name", "email", "phone"] as const).every((k) => values[k].trim().length > 0);
 
   const update =
-    (key: keyof typeof values) =>
+    (key: "name" | "email" | "phone" | "anything") =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setValues((v) => ({ ...v, [key]: e.target.value }));
+
+  const toggleTime = (t: string) =>
+    setValues((v) => ({ ...v, times: v.times.includes(t) ? v.times.filter((x) => x !== t) : [...v.times, t] }));
 
   return (
     <form
@@ -60,40 +59,18 @@ export default function BookForm({
       aria-busy={busy}
       noValidate
     >
-      <div className="grid grid-cols-2 gap-3">
-        <label className="grid gap-1.5">
-          <span className="text-sm font-bold">{book.fields.parent}</span>
-          <input
-            type="text"
-            autoComplete="name"
-            className={fieldClass}
-            value={values.parent}
-            onChange={update("parent")}
-          />
-        </label>
-        <label className="grid gap-1.5">
-          <span className="text-sm font-bold">{book.fields.child}</span>
-          <input
-            type="text"
-            className={fieldClass}
-            value={values.child}
-            onChange={update("child")}
-          />
-        </label>
-      </div>
+      <label className="grid gap-1.5">
+        <span className="text-sm font-bold">{book.fields.name}</span>
+        <input
+          type="text"
+          autoComplete="name"
+          className={fieldClass}
+          value={values.name}
+          onChange={update("name")}
+        />
+      </label>
 
       <div className="grid gap-4 md:grid-cols-2 md:gap-3">
-        <label className="grid gap-1.5">
-          <span className="text-sm font-bold">{book.fields.email}</span>
-          <input
-            type="email"
-            autoComplete="email"
-            inputMode="email"
-            className={fieldClass}
-            value={values.email}
-            onChange={update("email")}
-          />
-        </label>
         <label className="grid gap-1.5">
           <span className="text-sm font-bold">{book.fields.phone}</span>
           <input
@@ -105,19 +82,30 @@ export default function BookForm({
             onChange={update("phone")}
           />
         </label>
+        <label className="grid gap-1.5">
+          <span className="text-sm font-bold">{book.fields.email}</span>
+          <input
+            type="email"
+            autoComplete="email"
+            inputMode="email"
+            className={fieldClass}
+            value={values.email}
+            onChange={update("email")}
+          />
+        </label>
       </div>
 
       <fieldset className="grid gap-1.5">
-        <legend className="text-sm font-bold">{book.fields.days}</legend>
-        <div className="grid grid-cols-3 gap-2">
+        <legend className="text-sm font-bold">{book.fields.times}</legend>
+        <div className="grid grid-cols-2 gap-2">
           {enrolling.cohorts.map((c) => {
-            const on = values.days === c.days;
+            const on = values.times.includes(c.days);
             return (
               <button
                 key={c.days}
                 type="button"
                 aria-pressed={on}
-                onClick={() => setValues((v) => ({ ...v, days: on ? "" : c.days }))}
+                onClick={() => toggleTime(c.days)}
                 className={`min-h-touch rounded-xl border px-2 py-2 text-base font-bold transition active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:text-sm ${
                   on
                     ? "border-primary bg-primary text-background"
@@ -125,6 +113,7 @@ export default function BookForm({
                 }`}
               >
                 {c.days}
+                <span className={`block text-xs font-normal ${on ? "text-background/80" : "text-primary/60"}`}>{c.time}</span>
               </button>
             );
           })}
@@ -132,12 +121,12 @@ export default function BookForm({
       </fieldset>
 
       <label className="grid gap-1.5">
-        <span className="text-sm font-bold">{book.fields.background}</span>
+        <span className="text-sm font-bold">{book.fields.anything}</span>
         <textarea
-          rows={5}
+          rows={4}
           className={`${fieldClass} resize-y`}
-          value={values.background}
-          onChange={update("background")}
+          value={values.anything}
+          onChange={update("anything")}
         />
       </label>
       {ready && (
@@ -147,8 +136,13 @@ export default function BookForm({
             variant="secondary"
             className={`w-full md:w-auto ${busy ? "pointer-events-none scale-[0.98] bg-primary/10" : ""}`}
           >
-            {book.submit}
+            {busy ? "Sending…" : book.submit}
           </Button>
+          {error && (
+            <p role="alert" className="mt-3 text-sm font-bold text-primary">
+              {error}
+            </p>
+          )}
         </div>
       )}
     </form>

@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import BookForm from "@/components/BookForm";
+import BookForm, { type BookValues } from "@/components/BookForm";
 import { PendingText } from "@/components/Placeholder";
 import CubeTwist from "@/components/screens/CubeTwist";
 import Screen, { ScreenTitle } from "@/components/screens/Screen";
 import { book, deckBook, footer, nav } from "@/content/deck";
+import { submitLead } from "@/lib/leads";
 import { choreograph, type Choreography } from "@/lib/rubiks";
 
 // The last screen: the booking form, and once it's sent, the thank-you.
@@ -158,9 +159,22 @@ export default function BookScreen() {
   const [covered, setCovered] = useState(false);
 
   const hold = useRef<ReturnType<typeof holdScroll> | null>(null);
+  // Posting to HQ: the button holds its pressed look; a failure shows under it and leaves the form as typed.
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
 
-  const send = async () => {
-    if (!ref.current || phase !== "form") return;
+  const send = async (values: BookValues) => {
+    if (!ref.current || phase !== "form" || sending) return;
+    // Save the lead first; the cube only turns once HQ has it.
+    setSending(true);
+    setSendError(null);
+    const saved = await submitLead(values);
+    setSending(false);
+    if (!saved) {
+      setSendError(book.error);
+      return;
+    }
+    if (!ref.current) return;
     // Before anything moves: snapping off, scroll pinned, keyboard away.
     hold.current = holdScroll(() => ref.current);
     (document.activeElement as HTMLElement | null)?.blur();
@@ -280,7 +294,7 @@ export default function BookScreen() {
           <div className={hidden ? "invisible" : undefined} inert={phase === "twisting"}>
             <ScreenTitle>{book.header}</ScreenTitle>
             <div className="mt-5">
-              <BookForm onSubmit={send} busy={phase === "settling" || phase === "capturing"} />
+              <BookForm onSubmit={send} busy={sending || phase === "settling" || phase === "capturing"} error={sendError} />
             </div>
             <p className="mt-8 text-xs text-primary/60">
               {nav.wordmark} · <PendingText text={footer.email.text} /> ·{" "}

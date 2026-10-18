@@ -105,17 +105,16 @@ export const tutoring = {
 export const book = {
   header: "Let's chat to see if AI Prodigy Builder is a good fit",
   fields: {
-    parent: "Parent's name",
-    child: "Child's name",
+    name: "Name",
     email: "Email",
     phone: "Phone number",
-    // Optional: one tap picks a cohort from the enrolling table, so the
-    // call starts at "which week", not "which days".
-    days: "Preferred days",
-    background:
-      "Please include any relevant background about your child, past experiences, interests, suitability for this course etc",
+    // Multi-select: every cohort slot from the enrolling table they could make.
+    times: "Which of these times works for you? Pick as many as you'd like.",
+    anything: "Anything else?",
   },
   submit: "Submit",
+  // Shown under the form when the backend can't be reached; the form stays put.
+  error: "That didn't go through. Please try again, or email us directly.",
 };
 
 export const footer = {
