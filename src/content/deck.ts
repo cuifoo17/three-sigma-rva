@@ -24,8 +24,7 @@ export const deckHero = {
 // Exact copy baked into the frames of /hero.mp4 (the Screens hero). Read by
 // screen readers only; change it when the video changes.
 export const heroVideo = {
-  headline: "When teens learn to use AI correctly, it grows their mind, not stifle it",
-  sub: "Over five weeks, in person, your child will learn to direct AI rather than lean on it. By the end they'll be creating websites, apps, and videos that they fully understand from top to bottom.",
+  headline: "When teens learn to use AI correctly. It grows their mind, not stifle it.",
 };
 
 export const deckTeacher = {

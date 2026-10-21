@@ -6,7 +6,7 @@ import { heroVideo } from "@/content/deck";
 import useAutoReplay from "@/components/screens/useAutoReplay";
 import heroEnd from "@/app/hero-end.jpg";
 
-// The hero as a video: headline, subtitle and bell curve are all in the
+// The hero as a video: headline and bell curve are both in the
 // frames, so the copy lives only in the screen-reader text. Reduced motion
 // gets the last frame as a still instead.
 // Plain <video> paths don't get the basePath that next/image and Link do,
@@ -22,7 +22,6 @@ export default function HeroVideo() {
     // back over the screen's 1rem gutters. Desktop keeps the centred column.
     <div className="-mx-4 md:mx-0">
       <h1 className="sr-only">{heroVideo.headline}</h1>
-      <p className="sr-only">{heroVideo.sub}</p>
       <video
         ref={ref}
         src={`${base}/hero.mp4`}
