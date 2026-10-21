@@ -3,7 +3,7 @@
 
 export const nav = {
   wordmark: "Three Sigma",
-  cta: { label: "Book a free call", href: "#book" },
+  cta: { label: "Book a consultation", href: "#book" },
 };
 
 export const hero = {
