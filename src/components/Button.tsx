@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { MouseEvent, ReactNode } from "react";
 
 type Props = {
   href?: string;
@@ -7,7 +7,7 @@ type Props = {
   size?: "md" | "sm";
   className?: string;
   children: ReactNode;
-  onClick?: () => void;
+  onClick?: (e: MouseEvent<HTMLElement>) => void;
   type?: "button" | "submit";
 };
 
