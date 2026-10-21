@@ -2,7 +2,7 @@
 // and render in a visibly different style until the founder supplies the text.
 
 export const nav = {
-  wordmark: "Three Sigma",
+  wordmark: "Gifted Teen AI Accelerator",
   cta: { label: "Book a consultation", href: "#book" },
 };
 
