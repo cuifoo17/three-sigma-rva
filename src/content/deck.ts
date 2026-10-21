@@ -13,7 +13,7 @@ export { nav, book, footer, tutoring };
 // Book screen only: replaces the form once it's sent (after the cube twist).
 export const deckBook = {
   thanks:
-    "Thanks for the info, I'll be personally reaching out to see if the AI prodigy builder is a good fit for your child.",
+    "Thanks for the info, I'll be personally reaching out to see if the Gifted Teen AI Accelerator is a good fit for your child.",
 };
 
 export const deckHero = {
