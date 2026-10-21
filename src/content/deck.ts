@@ -31,7 +31,7 @@ export const deckTeacher = {
   header: "About the teacher",
   points: [
     "I'm Braulio, a Virginia native who studied Mandarin at Princeton. I have over 10 years of experience teaching and coaching kids of all ages.",
-    "Over the past year I've published 4 apps to the App Store and helped small business owners improve their online presence.",
+    "Using the methods I teach in this course, I've launched 4 apps and made professional software for local businesses.",
     "As a former gifted child myself, I know what your teen is capable of. My goal is to teach them to use AI as a tool that helps them reach their full potential.",
   ],
 };
