@@ -79,6 +79,16 @@ export default function OutcomesScreen() {
           dur={SUB_DUR}
           reduce={reduce}
         />
+        {/* The note fades in as the header finishes streaming: 20% smaller
+            (0.8em of the header), regular weight, kept on one line. */}
+        <motion.span
+          className="ml-2 whitespace-nowrap text-[0.8em] font-normal"
+          initial={{ opacity: 0, y: 6 }}
+          animate={on ? { opacity: 1, y: 0 } : undefined}
+          transition={t(SUB_AT + SUB_DUR, 0.7)}
+        >
+          {course.note}
+        </motion.span>
       </h3>
       <div className="mt-2 md:mt-4">
         <CourseCarousel

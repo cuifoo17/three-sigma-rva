@@ -69,6 +69,8 @@ export const deckOutcomes = {
 // founder's words.
 export const course = {
   header: "Course Contents",
+  // Sits beside the header, smaller and regular weight.
+  note: "(No experience required)",
   lessons: [
     {
       title: "Hello world",
