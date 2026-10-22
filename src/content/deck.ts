@@ -90,7 +90,7 @@ export const course = {
     },
     {
       title: "Padding, pills, and corner radii",
-      body: "Students learn the basics of UI.",
+      body: "Students learn the basics of UI: spacing, type, color, and the small details that separate AI slop from an intentionally designed website.",
     },
     {
       title: "Lights, camera, Opus",
