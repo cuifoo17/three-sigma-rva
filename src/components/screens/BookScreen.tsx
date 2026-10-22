@@ -2,7 +2,6 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import BookForm, { type BookValues } from "@/components/BookForm";
-import { PendingText } from "@/components/Placeholder";
 import CubeTwist from "@/components/screens/CubeTwist";
 import Screen, { ScreenTitle } from "@/components/screens/Screen";
 import { book, deckBook, footer, nav } from "@/content/deck";
@@ -296,9 +295,11 @@ export default function BookScreen() {
             <div className="mt-5">
               <BookForm onSubmit={send} busy={sending || phase === "settling" || phase === "capturing"} error={sendError} />
             </div>
-            <p className="mt-8 text-xs text-primary/60">
-              {nav.wordmark} · <PendingText text={footer.email.text} /> ·{" "}
-              <PendingText text={footer.location.text} /> · {footer.legal}
+            {/* Pinned to the section's bottom edge, where the yellow meets the
+                cream: absolute against the section, which is the nearest
+                positioned ancestor, inside the section's bottom padding. */}
+            <p className="absolute inset-x-4 bottom-[10px] mx-auto max-w-xl text-xs text-primary/60 md:inset-x-8 md:max-w-2xl">
+              {nav.wordmark} · {footer.email.text} · {footer.location.text} · {footer.legal}
             </p>
           </div>
         )}

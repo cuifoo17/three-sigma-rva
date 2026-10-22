@@ -116,8 +116,8 @@ export const book = {
 };
 
 export const footer = {
-  email: { text: "email@example.com", pending: true },
-  location: { text: "Richmond, Virginia", pending: true },
+  email: { text: "origamies.management@gmail.com" },
+  location: { text: "Richmond, Virginia" },
   social: { text: "Social link", pending: true },
   legal: "© 2026 Three Sigma Coaching",
 };
