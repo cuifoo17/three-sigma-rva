@@ -103,7 +103,7 @@ export const tutoring = {
 };
 
 export const book = {
-  header: "Gifted Teen AI Accelerator interest form",
+  header: "Fill out the form and I'll reach out for a consultation :)",
   fields: {
     name: "Name",
     email: "Email",
