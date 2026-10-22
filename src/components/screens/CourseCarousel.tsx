@@ -10,77 +10,24 @@ import { easeOut } from "@/components/screens/timing";
 type Lesson = { title: string; body: string };
 type Enter = { on: boolean; at: number; dur: number; gap: number };
 
-// COMPARISON PASS (temporary): each lesson wears a different numeral
-// treatment, lesson 1 = idea 1 through lesson 10 = idea 10, so the founder
-// can pick one in context. Collapse to the winner afterwards.
+// COMPARISON PASS (temporary): lessons 1 to 5 wear the hard navy drop
+// shadow, 6 to 10 the zero-padded mono figures, so the founder can scroll
+// each run and pick one. Collapse to the winner afterwards.
 const big = "text-4xl leading-none font-bold";
 function Numeral({ i }: { i: number }) {
   const n = i + 1;
-  switch (n) {
-    case 1: // Navy outline on the yellow glyph.
-      return (
-        <span className={`${big} text-yellow [-webkit-text-stroke:1.5px_var(--color-primary)] [paint-order:stroke_fill]`}>
-          {n}
-        </span>
-      );
-    case 2: // Thin yellow square frame, navy numeral.
-      return (
-        <span className="inline-flex size-12 items-center justify-center border-[1.5px] border-yellow text-[1.75rem] leading-none font-bold text-primary">
-          {n}
-        </span>
-      );
-    case 3: // Yellow underline bar.
-      return (
-        <span className={`${big} inline-block text-yellow after:mt-1 after:block after:h-1 after:w-[0.75em] after:bg-yellow after:content-['']`}>
-          {n}
-        </span>
-      );
-    case 4: // Hard navy drop shadow, no blur.
-      return (
-        <span className={`${big} text-yellow [text-shadow:3px_3px_0_var(--color-primary)]`}>
-          {n}
-        </span>
-      );
-    case 5: // Outline only, blue shows through.
-      return (
-        <span className={`${big} text-transparent [-webkit-text-stroke:2px_var(--color-yellow)]`}>
-          {n}
-        </span>
-      );
-    case 6: // Navy numeral on a yellow highlighter swipe.
-      return (
-        <span className={`${big} relative z-0 inline-block px-1 text-primary before:absolute before:inset-x-0 before:inset-y-[0.08em] before:-z-10 before:-rotate-2 before:bg-yellow before:content-['']`}>
-          {n}
-        </span>
-      );
-    case 7: // Oversized ghost numeral behind, small solid one in front.
-      return (
-        <>
-          <span className="pointer-events-none absolute left-0 top-[-0.35rem] select-none text-[5.5rem] leading-none font-bold text-yellow/30">
-            {n}
-          </span>
-          <span className={`${big} relative text-yellow`}>{n}</span>
-        </>
-      );
-    case 8: // Zero-padded, mono figures.
-      return (
-        <span className={`${big} font-mono tabular-nums text-yellow`}>
-          {String(n).padStart(2, "0")}
-        </span>
-      );
-    case 9: // Navy numeral with a small yellow dot after it.
-      return (
-        <span className={`${big} text-primary after:ml-0.5 after:inline-block after:size-2 after:rounded-full after:bg-yellow after:content-['']`}>
-          {n}
-        </span>
-      );
-    default: // 10: Yellow numeral with a navy left tab.
-      return (
-        <span className={`${big} border-l-4 border-primary pl-2 text-yellow`}>
-          {n}
-        </span>
-      );
+  if (n <= 5) {
+    return (
+      <span className={`${big} text-yellow [text-shadow:3px_3px_0_var(--color-primary)]`}>
+        {n}
+      </span>
+    );
   }
+  return (
+    <span className={`${big} font-mono tabular-nums text-yellow`}>
+      {String(n).padStart(2, "0")}
+    </span>
+  );
 }
 
 export default function CourseCarousel({
