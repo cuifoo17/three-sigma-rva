@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Sans } from "next/font/google";
 import Analytics from "@/components/Analytics";
+import MetaPixel from "@/components/MetaPixel";
 import Header from "@/components/Header";
 import "./globals.css";
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main>{children}</main>
         <Analytics />
+        <MetaPixel />
       </body>
     </html>
   );

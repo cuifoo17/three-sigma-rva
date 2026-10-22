@@ -8,6 +8,7 @@ import { book, deckBook, footer, nav } from "@/content/deck";
 import { SPEED } from "@/components/screens/timing";
 import { track } from "@/lib/analytics";
 import { submitLead } from "@/lib/leads";
+import { pixelLead } from "@/lib/pixel";
 import { choreograph, type Choreography } from "@/lib/rubiks";
 
 // The last screen: the booking form, and once it's sent, the thank-you.
@@ -185,6 +186,7 @@ export default function BookScreen() {
       return;
     }
     track("saved");
+    pixelLead();
     if (!ref.current) return;
     // Before anything moves: snapping off, scroll pinned, keyboard away.
     hold.current = holdScroll(() => ref.current);
