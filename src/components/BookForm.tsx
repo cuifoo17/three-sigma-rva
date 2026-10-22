@@ -4,7 +4,8 @@ import { useState } from "react";
 import Button from "@/components/Button";
 import { book } from "@/content/site";
 
-// The submit button appears once name, email and phone are filled; submitting
+// The submit button is always there, greyed out until the name has two
+// characters, the phone is a full ten digits and the email has two; submitting
 // hands the values to onSubmit, which posts them to HQ. Name and phone share
 // a row at every width (founder's call); email gets a full row, since half a
 // phone screen is too narrow to type an address into.
@@ -53,7 +54,10 @@ export default function BookForm({
     times: [],
     anything: "",
   });
-  const ready = (["name", "email", "phone"] as const).every((k) => values[k].trim().length > 0);
+  const ready =
+    values.name.trim().length >= 2 &&
+    values.phone.replace(/\D/g, "").length === 10 &&
+    values.email.trim().length >= 2;
 
   const update =
     (key: "name" | "email" | "phone" | "anything") =>
@@ -118,22 +122,21 @@ export default function BookForm({
           onChange={update("anything")}
         />
       </label>
-      {ready && (
-        <div className="pt-2">
-          <Button
-            type="submit"
-            variant="secondary"
-            className={`w-full md:w-auto ${busy ? "pointer-events-none scale-[0.98] bg-primary/10" : ""}`}
-          >
-            {busy ? "Sending…" : book.submit}
-          </Button>
-          {error && (
-            <p role="alert" className="mt-3 text-sm font-bold text-primary">
-              {error}
-            </p>
-          )}
-        </div>
-      )}
+      <div className="pt-2">
+        <Button
+          type="submit"
+          variant="navy"
+          disabled={!ready}
+          className={`w-full md:w-auto ${busy ? "pointer-events-none scale-[0.98] brightness-90" : ""}`}
+        >
+          {busy ? "Sending…" : book.submit}
+        </Button>
+        {error && (
+          <p role="alert" className="mt-3 text-sm font-bold text-primary">
+            {error}
+          </p>
+        )}
+      </div>
     </form>
   );
 }

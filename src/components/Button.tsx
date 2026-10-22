@@ -3,12 +3,14 @@ import type { MouseEvent, ReactNode } from "react";
 
 type Props = {
   href?: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "navy";
   size?: "md" | "sm";
   className?: string;
   children: ReactNode;
   onClick?: (e: MouseEvent<HTMLElement>) => void;
   type?: "button" | "submit";
+  // Plain <button> only: greyed out and inert.
+  disabled?: boolean;
 };
 
 const base =
@@ -18,6 +20,7 @@ const variants = {
   primary: "bg-yellow text-primary hover:brightness-95 active:brightness-90",
   secondary:
     "border-2 border-primary text-primary hover:bg-primary/5 active:bg-primary/10",
+  navy: "bg-primary text-background hover:brightness-110 active:brightness-95 disabled:pointer-events-none disabled:opacity-35",
 };
 
 const sizes = {
@@ -33,6 +36,7 @@ export default function Button({
   children,
   onClick,
   type = "button",
+  disabled = false,
 }: Props) {
   const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
   if (href) {
@@ -43,7 +47,7 @@ export default function Button({
     );
   }
   return (
-    <button type={type} className={classes} onClick={onClick}>
+    <button type={type} className={classes} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );
