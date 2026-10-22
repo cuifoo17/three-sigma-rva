@@ -25,7 +25,6 @@ const ROW_TEXT_DUR = 0.3;
 const CHECK_DUR = 0.4;
 const ROW_GAP = 0.1;
 const ROW_PERIOD = ROW_TEXT_DUR + CHECK_DUR + ROW_GAP;
-const CLOSING_AT = ROWS_AT + deckFit.rows.length * ROW_PERIOD;
 
 export default function FitScreen() {
   const ref = useRef<HTMLDivElement>(null);
@@ -121,17 +120,6 @@ export default function FitScreen() {
           })}
         </ul>
       </div>
-
-      {/* Pinned to the section's bottom edge; a sibling of the content so no
-          transformed ancestor becomes its containing block. */}
-      <motion.p
-        className="absolute inset-x-4 bottom-[10px] mx-auto max-w-xl text-sm md:inset-x-8 md:max-w-2xl"
-        initial={{ opacity: 0 }}
-        animate={on ? { opacity: 1 } : undefined}
-        transition={t(CLOSING_AT, 1)}
-      >
-        {deckFit.closing}
-      </motion.p>
     </>
   );
 }
