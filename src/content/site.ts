@@ -2,8 +2,9 @@
 // and render in a visibly different style until the founder supplies the text.
 
 export const nav = {
-  wordmark: "Gifted Teen AI Accelerator",
-  cta: { label: "Book a consultation", href: "#book" },
+  // "\n" is a forced line break on phones; one line from tablet width.
+  wordmark: "Gifted Teen\nAI Accelerator",
+  cta: { label: "Schedule a\nConsultation", href: "#book" },
 };
 
 export const hero = {

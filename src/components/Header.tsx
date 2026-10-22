@@ -13,6 +13,17 @@ import { nav } from "@/content/site";
 // on the form instead of the top. The href stays as the no-JS fallback.
 // Instant, not smooth: iOS Safari's smooth scroll gets caught by the
 // mandatory snap and stops on the next card instead of the target.
+// Copy with "\n" stacks on phones and runs as one line from md.
+function Lines({ text }: { text: string }) {
+  const lines = text.split("\n");
+  return lines.map((line, i) => (
+    <span key={line} className="block md:inline">
+      {line}
+      {i < lines.length - 1 && <span className="hidden md:inline"> </span>}
+    </span>
+  ));
+}
+
 export default function Header() {
   const goToForm = (e: MouseEvent<HTMLElement>) => {
     const id = nav.cta.href.replace(/^#/, "");
@@ -27,12 +38,14 @@ export default function Header() {
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 md:px-8">
         <Link
           href="/"
-          className="text-xl font-bold tracking-tight text-primary"
+          className="text-xl leading-tight font-bold tracking-tight text-primary"
         >
-          {nav.wordmark}
+          <Lines text={nav.wordmark} />
         </Link>
-        <Button href={nav.cta.href} size="sm" onClick={goToForm}>
-          {nav.cta.label}
+        <Button href={nav.cta.href} size="sm" onClick={goToForm} className="text-center leading-tight">
+          <span>
+            <Lines text={nav.cta.label} />
+          </span>
         </Button>
       </div>
     </header>
