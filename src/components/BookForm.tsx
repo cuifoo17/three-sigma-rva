@@ -6,9 +6,10 @@ import { book } from "@/content/site";
 import { enrolling } from "@/content/deck";
 
 // The submit button appears once name, email and phone are filled; submitting
-// hands the values to onSubmit, which posts them to HQ. Email and phone pair
-// up from tablet width and stack on phones, where half a screen is too narrow
-// to type an address into. Times is multi-select, one tap each, optional.
+// hands the values to onSubmit, which posts them to HQ. Name and phone share
+// a row at every width (founder's call); email gets a full row, since half a
+// phone screen is too narrow to type an address into. Times is multi-select,
+// one tap each, optional.
 const fieldClass =
   "w-full rounded-xl border border-primary/15 bg-surface px-4 py-3 text-base text-primary placeholder:text-primary/40 focus:border-primary focus:outline-none md:text-sm";
 
@@ -59,18 +60,17 @@ export default function BookForm({
       aria-busy={busy}
       noValidate
     >
-      <label className="grid gap-1.5">
-        <span className="text-sm font-bold">{book.fields.name}</span>
-        <input
-          type="text"
-          autoComplete="name"
-          className={fieldClass}
-          value={values.name}
-          onChange={update("name")}
-        />
-      </label>
-
-      <div className="grid gap-4 md:grid-cols-2 md:gap-3">
+      <div className="grid grid-cols-2 gap-3">
+        <label className="grid gap-1.5">
+          <span className="text-sm font-bold">{book.fields.name}</span>
+          <input
+            type="text"
+            autoComplete="name"
+            className={fieldClass}
+            value={values.name}
+            onChange={update("name")}
+          />
+        </label>
         <label className="grid gap-1.5">
           <span className="text-sm font-bold">{book.fields.phone}</span>
           <input
@@ -82,18 +82,19 @@ export default function BookForm({
             onChange={update("phone")}
           />
         </label>
-        <label className="grid gap-1.5">
-          <span className="text-sm font-bold">{book.fields.email}</span>
-          <input
-            type="email"
-            autoComplete="email"
-            inputMode="email"
-            className={fieldClass}
-            value={values.email}
-            onChange={update("email")}
-          />
-        </label>
       </div>
+
+      <label className="grid gap-1.5">
+        <span className="text-sm font-bold">{book.fields.email}</span>
+        <input
+          type="email"
+          autoComplete="email"
+          inputMode="email"
+          className={fieldClass}
+          value={values.email}
+          onChange={update("email")}
+        />
+      </label>
 
       <fieldset className="grid gap-1.5">
         <legend className="text-sm font-bold">{book.fields.times}</legend>
