@@ -10,26 +10,6 @@ import { easeOut } from "@/components/screens/timing";
 type Lesson = { title: string; body: string };
 type Enter = { on: boolean; at: number; dur: number; gap: number };
 
-// COMPARISON PASS (temporary): lessons 1 to 5 wear the hard navy drop
-// shadow, 6 to 10 the zero-padded mono figures, so the founder can scroll
-// each run and pick one. Collapse to the winner afterwards.
-const big = "text-4xl leading-none font-bold";
-function Numeral({ i }: { i: number }) {
-  const n = i + 1;
-  if (n <= 5) {
-    return (
-      <span className={`${big} text-yellow [text-shadow:3px_3px_0_var(--color-primary)]`}>
-        {n}
-      </span>
-    );
-  }
-  return (
-    <span className={`${big} font-mono tabular-nums text-yellow`}>
-      {String(n).padStart(2, "0")}
-    </span>
-  );
-}
-
 export default function CourseCarousel({
   lessons,
   enter,
@@ -62,11 +42,14 @@ export default function CourseCarousel({
           {...entrance(i)}
           // 1 / 1.75 of the column. Rule on the left of every item but the
           // first; the padding either side of it keeps text off the line.
-          className="relative w-[57.14%] shrink-0 snap-start border-l-2 border-black/15 px-4 first:border-l-0 first:pl-0 last:pr-0"
+          className="w-[57.14%] shrink-0 snap-start border-l-2 border-black/15 px-4 first:border-l-0 first:pl-0 last:pr-0"
         >
-          {/* Numeral slot: fixed height so titles line up across treatments. */}
-          <span aria-hidden="true" className="flex h-12 items-end">
-            <Numeral i={i} />
+          {/* Big yellow numeral with a hard navy drop shadow, no badge. */}
+          <span
+            aria-hidden="true"
+            className="block text-4xl leading-none font-bold text-yellow [text-shadow:3px_3px_0_var(--color-primary)]"
+          >
+            {i + 1}
           </span>
           {/* Title and body are 20% up from text-base / text-sm. */}
           <p className="mt-2 text-[1.2rem] font-bold leading-tight tracking-tight text-primary">
