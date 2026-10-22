@@ -152,11 +152,11 @@ export const enrolling = {
     { days: "Tue + Thu", time: "5:00 to 6:00", dates: "Nov 10 to Dec 15", seats: 5 },
   ],
   faq: [
-    "1 hour classes held twice a week (off for Thanksgiving).",
-    "No coding experience needed.",
-    "Small classes of gifted students (Max 5 students per class).",
-    "$1,000 for the five week course.",
-    "Every student is screened. I'll go over requirements on the call.",
+    "1-hour classes held twice a week (Thanksgiving off).",
+    "A maximum of 5 students per class.",
+    "Every student is screened for aptitude. I'll explain more during the free consultation.",
+    "Cost is $1,000.",
+    "No coding experience necessary.",
   ],
 
 };
