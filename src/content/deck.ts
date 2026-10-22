@@ -86,7 +86,7 @@ export const course = {
     },
     {
       title: "Sign in with Google",
-      body: "Students learn how to use CLIs to integrate live databases into their projects.",
+      body: "Students learn how to use CLIs to integrate live databases into their projects. Their project stops being a demo and becomes something real people could sign up for.",
     },
     {
       title: "Padding, pills, and corner radii",
