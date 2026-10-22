@@ -82,7 +82,7 @@ export const course = {
     },
     {
       title: "Hey Claude, let me teach you something",
-      body: "Students write their first Claude skill: a set of instructions that teaches Claude how to do something their way, so the AI works to their standards instead of the other way around.",
+      body: "Students write their first Claude skill: a set of instructions that teaches Claude how to do something their way, so the AI works to their standards, not the other way around.",
     },
     {
       title: "Sign in with Google",
