@@ -74,7 +74,7 @@ export const course = {
   lessons: [
     {
       title: "Hello world",
-      body: "Teens get their first taste of Claude code by building a website with one prompt. This will serve as the baseline to improve upon for the rest of the course.",
+      body: "Teens get their first taste of Claude Code by building a website with one prompt. This will serve as the baseline to improve upon for the rest of the course.",
     },
     {
       title: "Tell me what I don't know",
