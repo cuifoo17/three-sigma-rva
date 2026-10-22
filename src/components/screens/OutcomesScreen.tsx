@@ -90,7 +90,8 @@ export default function OutcomesScreen() {
           {course.note}
         </motion.span>
       </h3>
-      <div className="mt-2 md:mt-4">
+      {/* 8px and 16px plus 5px: founder wanted more air under the header. */}
+      <div className="mt-[13px] md:mt-[21px]">
         <CourseCarousel
           lessons={course.lessons}
           enter={{ on, at: CARDS_AT, dur: CARD_DUR, gap: CARD_GAP }}
