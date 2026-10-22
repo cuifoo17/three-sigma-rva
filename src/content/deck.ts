@@ -81,16 +81,16 @@ export const course = {
       body: "Students ask Claude to explain the parts of their project they don't understand yet, then learn to weigh the trade-offs themselves and pick the right option for their situation.",
     },
     {
+      title: "Padding, pills, and corner radii",
+      body: "Students learn the basics of UI: spacing, type, color, and the small details that separate AI slop from an intentionally designed website.",
+    },
+    {
       title: "Hey Claude, let me teach you something",
       body: "Students write their first Claude skill: a set of instructions that teaches Claude how to do something their way, so the AI works to their standards, not the other way around.",
     },
     {
       title: "Sign in with Google",
       body: "Students learn how to use CLIs to integrate live databases into their projects. Their project stops being a demo and becomes something real people could sign up for.",
-    },
-    {
-      title: "Padding, pills, and corner radii",
-      body: "Students learn the basics of UI: spacing, type, color, and the small details that separate AI slop from an intentionally designed website.",
     },
     {
       title: "Lights, camera, Opus",
