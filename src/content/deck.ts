@@ -12,8 +12,12 @@ export { nav, book, footer, tutoring };
 
 // Book screen only: replaces the form once it's sent (after the cube twist).
 export const deckBook = {
-  thanks:
-    "Thanks for the info, I'll be personally reaching out to see if the Gifted Teen AI Accelerator is a good fit for your child.",
+  thanks: {
+    before: "Thank you so much for your interest. I'll be personally reaching out very soon. In the meantime you can text me at ",
+    // Opens the phone's messaging app addressed to this number.
+    phone: { text: "(804) 801-6320", href: "sms:+18048016320" },
+    after: ".",
+  },
 };
 
 export const deckHero = {

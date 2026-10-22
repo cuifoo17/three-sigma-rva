@@ -32,7 +32,14 @@ type Twist = {
 function Thanks({ live = false }: { live?: boolean }) {
   return (
     <p role={live ? "status" : undefined} className="text-3xl font-bold tracking-tight text-balance md:text-5xl">
-      {deckBook.thanks}
+      {deckBook.thanks.before}
+      <a
+        href={deckBook.thanks.phone.href}
+        className="whitespace-nowrap underline decoration-2 underline-offset-4 hover:opacity-80"
+      >
+        {deckBook.thanks.phone.text}
+      </a>
+      {deckBook.thanks.after}
     </p>
   );
 }
