@@ -7,7 +7,10 @@ import { enrolling } from "@/content/deck";
 export default function EnrollScreen() {
   return (
     <Reveal>
-      <ScreenTitle>{enrolling.header}</ScreenTitle>
+      {/* 15% up on the shared title size, at every breakpoint. */}
+      <ScreenTitle>
+        <span className="text-[1.15em]">{enrolling.header}</span>
+      </ScreenTitle>
       <p className="mt-2 text-base text-background/75 md:text-lg">
         {enrolling.sub.before}
         <a
@@ -23,7 +26,8 @@ export default function EnrollScreen() {
 
       {/* Four columns fit a phone without sideways scroll; the wrapper
           scrolls as a fallback for very large text sizes. */}
-      <div className="mt-6 overflow-x-auto overscroll-x-contain">
+      {/* 24px and 32px plus 20px each: more air around the table. */}
+      <div className="mt-[44px] overflow-x-auto overscroll-x-contain">
         <table className="w-full border-collapse text-left text-base">
           <thead>
             <tr className="text-xs font-bold tracking-wide text-background/60 uppercase">
@@ -53,7 +57,7 @@ export default function EnrollScreen() {
         </table>
       </div>
 
-      <ul className="mt-8 space-y-2 text-base text-background/85">
+      <ul className="mt-[52px] space-y-2 text-base text-background/85">
         {enrolling.faq.map((line) => (
           <li key={line} className="flex gap-3">
             <span
