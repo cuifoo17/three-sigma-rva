@@ -139,7 +139,7 @@ export const enrolling = {
   header: "Now enrolling for Nov 10",
   // The address is a link to Google Maps (works on iOS and Android too).
   sub: {
-    before: "Small group classes held twice a week at ",
+    before: "In person classes held at ",
     address: "201 W 7th St",
     href: "https://www.google.com/maps/search/?api=1&query=201+W+7th+St,+Richmond,+VA",
     after: ".",
