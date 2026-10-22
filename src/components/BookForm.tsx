@@ -12,6 +12,16 @@ import { book } from "@/content/site";
 const fieldClass =
   "w-full rounded-xl border border-primary/15 bg-surface px-4 py-3 text-base text-primary placeholder:text-primary/40 focus:border-primary focus:outline-none md:text-sm";
 
+// US phone as (xxx) xxx-xxxx while they type: digits only, ten at most, the
+// punctuation added as soon as each group is there. Posted in this shape.
+function formatPhone(raw: string) {
+  const d = raw.replace(/\D/g, "").slice(0, 10);
+  if (d.length === 0) return "";
+  if (d.length < 4) return `(${d}`;
+  if (d.length < 7) return `(${d.slice(0, 3)}) ${d.slice(3)}`;
+  return `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`;
+}
+
 export type BookValues = {
   name: string;
   email: string;
@@ -45,7 +55,10 @@ export default function BookForm({
   const update =
     (key: "name" | "email" | "phone" | "anything") =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-      setValues((v) => ({ ...v, [key]: e.target.value }));
+      setValues((v) => ({
+        ...v,
+        [key]: key === "phone" ? formatPhone(e.target.value) : e.target.value,
+      }));
 
   return (
     <form
