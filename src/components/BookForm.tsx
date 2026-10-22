@@ -13,9 +13,12 @@ const fieldClass =
   "w-full rounded-xl border border-primary/15 bg-surface px-4 py-3 text-base text-primary placeholder:text-primary/40 focus:border-primary focus:outline-none md:text-sm";
 
 // US phone as (xxx) xxx-xxxx while they type: digits only, ten at most, the
-// punctuation added as soon as each group is there. Posted in this shape.
+// punctuation added as soon as each group is there. A leading country code 1
+// (autofill often gives +1 ...) is dropped. Posted in this shape.
 function formatPhone(raw: string) {
-  const d = raw.replace(/\D/g, "").slice(0, 10);
+  let d = raw.replace(/\D/g, "");
+  if (d.length === 11 && d.startsWith("1")) d = d.slice(1);
+  d = d.slice(0, 10);
   if (d.length === 0) return "";
   if (d.length < 4) return `(${d}`;
   if (d.length < 7) return `(${d.slice(0, 3)}) ${d.slice(3)}`;
