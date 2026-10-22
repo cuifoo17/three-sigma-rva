@@ -3,13 +3,12 @@
 import { useState } from "react";
 import Button from "@/components/Button";
 import { book } from "@/content/site";
-import { enrolling } from "@/content/deck";
 
 // The submit button appears once name, email and phone are filled; submitting
 // hands the values to onSubmit, which posts them to HQ. Name and phone share
 // a row at every width (founder's call); email gets a full row, since half a
-// phone screen is too narrow to type an address into. Times is multi-select,
-// one tap each, optional.
+// phone screen is too narrow to type an address into.
+// "Anything else" is optional.
 const fieldClass =
   "w-full rounded-xl border border-primary/15 bg-surface px-4 py-3 text-base text-primary placeholder:text-primary/40 focus:border-primary focus:outline-none md:text-sm";
 
@@ -17,6 +16,7 @@ export type BookValues = {
   name: string;
   email: string;
   phone: string;
+  // No picker any more (founder's call); stays in the payload, always empty.
   times: string[];
   anything: string;
 };
@@ -46,9 +46,6 @@ export default function BookForm({
     (key: "name" | "email" | "phone" | "anything") =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setValues((v) => ({ ...v, [key]: e.target.value }));
-
-  const toggleTime = (t: string) =>
-    setValues((v) => ({ ...v, times: v.times.includes(t) ? v.times.filter((x) => x !== t) : [...v.times, t] }));
 
   return (
     <form
@@ -95,31 +92,6 @@ export default function BookForm({
           onChange={update("email")}
         />
       </label>
-
-      <fieldset className="grid gap-1.5">
-        <legend className="text-sm font-bold">{book.fields.times}</legend>
-        <div className="grid grid-cols-2 gap-2">
-          {enrolling.cohorts.map((c) => {
-            const on = values.times.includes(c.days);
-            return (
-              <button
-                key={c.days}
-                type="button"
-                aria-pressed={on}
-                onClick={() => toggleTime(c.days)}
-                className={`min-h-touch rounded-xl border px-2 py-2 text-base font-bold transition active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:text-sm ${
-                  on
-                    ? "border-primary bg-primary text-background"
-                    : "border-primary/15 bg-surface text-primary hover:border-primary/40"
-                }`}
-              >
-                {c.days}
-                <span className={`block text-xs font-normal ${on ? "text-background/80" : "text-primary/60"}`}>{c.time}</span>
-              </button>
-            );
-          })}
-        </div>
-      </fieldset>
 
       <label className="grid gap-1.5">
         <span className="text-sm font-bold">{book.fields.anything}</span>

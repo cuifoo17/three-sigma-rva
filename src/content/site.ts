@@ -108,8 +108,6 @@ export const book = {
     name: "Name",
     email: "Email",
     phone: "Phone number",
-    // Multi-select: every cohort slot from the enrolling table they could make.
-    times: "Which of these times works for you? Pick as many as you'd like.",
     anything: "Anything else?",
   },
   submit: "Submit",
