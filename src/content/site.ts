@@ -108,7 +108,7 @@ export const book = {
     name: "Name",
     email: "Email",
     phone: "Phone number",
-    anything: "Anything else?",
+    anything: "Anything I should know about your teen?",
   },
   submit: "Submit",
   // Shown under the form when the backend can't be reached; the form stays put.
