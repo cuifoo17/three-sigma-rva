@@ -74,11 +74,11 @@ export const course = {
   lessons: [
     {
       title: "Hello world",
-      body: "Teens make their first app, website, or game with one prompt. This will serve as the baseline that we improve upon for the rest of the course.",
+      body: "Teens get their first taste of Claude code by building a website with one prompt. This will serve as the baseline to improve upon for the rest of the course.",
     },
     {
       title: "Tell me what I don't know",
-      body: "Students learn how to explore and understand unknown domains.",
+      body: "Students ask Claude to explain the parts of their project they don't understand yet, then learn to weigh the trade-offs themselves and pick the right option for their situation.",
     },
     {
       title: "Hey Claude, let me teach you something",
