@@ -5,11 +5,17 @@ import { useEffect, type RefObject } from "react";
 // done (no loop), and replay from the top each time the card is swiped back
 // into view. The first intersection is the initial load, where autoplay
 // already has it going, so only a return after leaving triggers a restart.
-export default function useAutoReplay(ref: RefObject<HTMLVideoElement | null>) {
+// onBlocked fires when the browser refuses the first play (Low Power Mode on
+// iOS, a data-saver setting), so the caller can show a still instead of a
+// blank frame with a play button.
+export default function useAutoReplay(
+  ref: RefObject<HTMLVideoElement | null>,
+  onBlocked?: () => void,
+) {
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    if (v.paused && !v.ended) v.play().catch(() => {});
+    if (v.paused && !v.ended) v.play().catch(() => onBlocked?.());
 
     let away = false;
     const io = new IntersectionObserver(
@@ -29,5 +35,5 @@ export default function useAutoReplay(ref: RefObject<HTMLVideoElement | null>) {
     );
     io.observe(v);
     return () => io.disconnect();
-  }, [ref]);
+  }, [ref, onBlocked]);
 }
