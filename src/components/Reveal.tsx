@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
+import { SPEED } from "@/components/screens/timing";
 
 // Fade-and-rise as a block enters the viewport. Plays once, never under 400ms,
 // and renders static for users who asked for reduced motion.
@@ -22,7 +23,7 @@ export default function Reveal({
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6 * SPEED, delay: delay * SPEED, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>

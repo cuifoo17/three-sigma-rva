@@ -5,6 +5,7 @@ import BookForm, { type BookValues } from "@/components/BookForm";
 import CubeTwist from "@/components/screens/CubeTwist";
 import Screen, { ScreenTitle } from "@/components/screens/Screen";
 import { book, deckBook, footer, nav } from "@/content/deck";
+import { SPEED } from "@/components/screens/timing";
 import { submitLead } from "@/lib/leads";
 import { choreograph, type Choreography } from "@/lib/rubiks";
 
@@ -47,7 +48,7 @@ function FadeIn({ onDone }: { onDone: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     const anim = ref.current?.animate([{ opacity: 0 }, { opacity: 1 }], {
-      duration: 300,
+      duration: 300 * SPEED,
       easing: "ease-out",
       fill: "both",
     });
@@ -104,7 +105,7 @@ function holdScroll(section: () => HTMLElement | null) {
       const from = y;
       const start = performance.now();
       const step = () => {
-        const t = Math.min(1, (performance.now() - start) / 300);
+        const t = Math.min(1, (performance.now() - start) / (300 * SPEED));
         y = from + (to - from) * (t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2);
         pin();
         if (t < 1) requestAnimationFrame(step);

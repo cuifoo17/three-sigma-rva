@@ -4,7 +4,7 @@ import { type Easing, motion, useInView, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useRef } from "react";
 import { ScreenTitle } from "@/components/screens/Screen";
-import { SLOW, easeOut, glide } from "@/components/screens/timing";
+import { easeOut, glide, SLOW, SPEED } from "@/components/screens/timing";
 import { deckTeacher } from "@/content/deck";
 import headshot from "@/app/headshot.png";
 
@@ -27,7 +27,7 @@ export default function TeacherScreen() {
   const reduce = useReducedMotion();
   const on = reduce || inView;
   const t = (delay: number, duration: number, ease: Easing = easeOut) =>
-    reduce ? { duration: 0 } : { delay, duration, ease };
+    reduce ? { duration: 0 } : { delay: delay * SPEED, duration: duration * SPEED, ease };
 
   return (
     <div ref={ref} className="overflow-x-clip">

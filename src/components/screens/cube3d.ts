@@ -21,6 +21,7 @@ import {
   type Material,
 } from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+import { SPEED } from "@/components/screens/timing";
 import {
   COLS,
   ROWS,
@@ -47,12 +48,13 @@ import {
 // model (src/lib/rubiks.ts) every frame, plus the turn in progress, so the
 // picture can't drift from the maths.
 
-const RECEDE = 700; // page -> cube, and cube -> page at the end
-const QUARTER = 450;
-const HALF = 600;
-const GAP = 80; // between turns
-const STAGGER = 80; // between rows of the wave
-const OVERLAP = 200; // first turn starts before the recede settles, last one before the return
+// Milliseconds, each scaled by the page-wide SPEED factor (timing.ts).
+const RECEDE = 700 * SPEED; // page -> cube, and cube -> page at the end
+const QUARTER = 450 * SPEED;
+const HALF = 600 * SPEED;
+const GAP = 80 * SPEED; // between turns
+const STAGGER = 80 * SPEED; // between rows of the wave
+const OVERLAP = 200 * SPEED; // first turn starts before the recede settles, last one before the return
 const TILT_X = (18 * Math.PI) / 180; // top toward the viewer
 const TILT_Y = (-28 * Math.PI) / 180; // right side toward the viewer
 

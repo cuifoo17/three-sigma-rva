@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { easeOut } from "@/components/screens/timing";
+import { easeOut, SPEED } from "@/components/screens/timing";
 
 // The ten sessions as a horizontal, snapping carousel. No cards: each lesson
 // is an invisible pill, and a 2px grey rule separates neighbours. About 1.75
@@ -25,8 +25,8 @@ export default function CourseCarousel({
           initial: { opacity: 0, x: -48 },
           animate: enter.on ? { opacity: 1, x: 0 } : undefined,
           transition: {
-            delay: enter.at + i * (enter.dur + enter.gap),
-            duration: enter.dur,
+            delay: (enter.at + i * (enter.dur + enter.gap)) * SPEED,
+            duration: enter.dur * SPEED,
             ease: easeOut,
           },
         };

@@ -1,7 +1,7 @@
 "use client";
 
 import { type Easing, motion, useInView, useReducedMotion } from "motion/react";
-import { SLOW, easeOut, glide } from "@/components/screens/timing";
+import { easeOut, glide, SLOW, SPEED } from "@/components/screens/timing";
 import Image from "next/image";
 import { useRef } from "react";
 import { ScreenTitle } from "@/components/screens/Screen";
@@ -33,7 +33,7 @@ export default function FitScreen() {
   const on = reduce || inView;
   // With reduced motion, every transition collapses to instant.
   const t = (delay: number, duration: number, ease: Easing = easeOut) =>
-    reduce ? { duration: 0 } : { delay, duration, ease };
+    reduce ? { duration: 0 } : { delay: delay * SPEED, duration: duration * SPEED, ease };
 
   return (
     <>
@@ -98,8 +98,8 @@ export default function FitScreen() {
                     reduce
                       ? { duration: 0 }
                       : {
-                          delay: checkAt,
-                          duration: CHECK_DUR,
+                          delay: checkAt * SPEED,
+                          duration: CHECK_DUR * SPEED,
                           times: [0, 0.6, 1],
                           ease: "easeOut",
                         }

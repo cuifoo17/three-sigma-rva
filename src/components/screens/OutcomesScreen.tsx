@@ -6,7 +6,7 @@ import { useRef } from "react";
 import CourseCarousel from "@/components/screens/CourseCarousel";
 import { ScreenTitle } from "@/components/screens/Screen";
 import StreamWords from "@/components/screens/StreamWords";
-import { SLOW, easeOut, glide } from "@/components/screens/timing";
+import { easeOut, glide, SLOW, SPEED } from "@/components/screens/timing";
 import { course, deckOutcomes } from "@/content/deck";
 import outcomesArt from "@/app/outcomes.png";
 
@@ -34,7 +34,7 @@ export default function OutcomesScreen() {
   const reduce = useReducedMotion();
   const on = reduce || inView;
   const t = (delay: number, duration: number, ease: Easing = easeOut) =>
-    reduce ? { duration: 0 } : { delay, duration, ease };
+    reduce ? { duration: 0 } : { delay: delay * SPEED, duration: duration * SPEED, ease };
 
   return (
     // overflow-x-clip: the slide-ins start outside the column and must not

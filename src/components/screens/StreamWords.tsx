@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { easeOut } from "@/components/screens/timing";
+import { easeOut, SPEED } from "@/components/screens/timing";
 
 // Streams copy in one word at a time, evenly across `dur` seconds from `at`.
 // A "\n" in the copy is a forced line break: that word gets a <br /> after it
@@ -33,8 +33,8 @@ export default function StreamWords({
           reduce
             ? { duration: 0 }
             : {
-                delay: at + (i / words.length) * dur,
-                duration: 0.7,
+                delay: (at + (i / words.length) * dur) * SPEED,
+                duration: 0.7 * SPEED,
                 ease: easeOut,
               }
         }
