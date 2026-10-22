@@ -116,7 +116,7 @@ export default function BookForm({
       <label className="grid gap-1.5">
         <span className="text-sm font-bold">{book.fields.anything}</span>
         <textarea
-          rows={4}
+          rows={3}
           className={`${fieldClass} resize-y`}
           value={values.anything}
           onChange={update("anything")}
