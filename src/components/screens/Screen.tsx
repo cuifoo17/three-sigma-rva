@@ -6,6 +6,7 @@ import type { CSSProperties, ReactNode, Ref } from "react";
 // section grow past one screen (the form), snapping at its top instead.
 // ref/style/overlay exist for the book screen, which locks its height and lays
 // the cube tiles over the whole section while it twists.
+// name: the key HQ analytics files this screen's dwell time under.
 type Tone = "cream" | "white" | "navy" | "yellow" | "sky";
 
 const tones: Record<Tone, string> = {
@@ -18,6 +19,7 @@ const tones: Record<Tone, string> = {
 
 export default function Screen({
   id,
+  name,
   tone = "cream",
   fill = true,
   ref,
@@ -26,6 +28,7 @@ export default function Screen({
   children,
 }: {
   id?: string;
+  name?: string;
   tone?: Tone;
   fill?: boolean;
   ref?: Ref<HTMLElement>;
@@ -36,6 +39,7 @@ export default function Screen({
   return (
     <section
       id={id}
+      data-screen={name}
       ref={ref}
       style={style}
       className={`relative flex snap-always px-4 pt-18 pb-20 md:px-8 ${tones[tone]} ${

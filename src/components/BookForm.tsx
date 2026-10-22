@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/Button";
+import { touched, track, type FormField } from "@/lib/analytics";
 import { book } from "@/content/site";
 
 // The submit button is always there, greyed out until the name has two
@@ -59,13 +60,22 @@ export default function BookForm({
     values.phone.replace(/\D/g, "").length === 10 &&
     values.email.trim().length >= 2;
 
+  // HQ analytics: the first time the button lights up.
+  useEffect(() => {
+    if (ready) track("formReady");
+  }, [ready]);
+
   const update =
-    (key: "name" | "email" | "phone" | "anything") =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    (key: FormField) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      touched(key);
       setValues((v) => ({
         ...v,
         [key]: key === "phone" ? formatPhone(e.target.value) : e.target.value,
       }));
+    };
+  // HQ analytics: a tap into any field counts as starting the form.
+  const started = () => track("formStarted");
 
   return (
     <form
@@ -86,6 +96,7 @@ export default function BookForm({
             className={fieldClass}
             value={values.name}
             onChange={update("name")}
+            onFocus={started}
           />
         </label>
         <label className="grid gap-1.5">
@@ -97,6 +108,7 @@ export default function BookForm({
             className={fieldClass}
             value={values.phone}
             onChange={update("phone")}
+            onFocus={started}
           />
         </label>
       </div>
@@ -110,6 +122,7 @@ export default function BookForm({
           className={fieldClass}
           value={values.email}
           onChange={update("email")}
+          onFocus={started}
         />
       </label>
 
@@ -120,6 +133,7 @@ export default function BookForm({
           className={`${fieldClass} resize-y`}
           value={values.anything}
           onChange={update("anything")}
+          onFocus={started}
         />
       </label>
       <div className="pt-2">

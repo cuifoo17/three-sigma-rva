@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { MouseEvent } from "react";
 import Button from "@/components/Button";
+import { track } from "@/lib/analytics";
 import { nav } from "@/content/site";
 
 // Wordmark and the ask only. No menu or section links: the page is a funnel
@@ -30,6 +31,7 @@ export default function Header() {
     const target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
+    track("cta");
     target.scrollIntoView({ behavior: "auto", block: "start" });
   };
 

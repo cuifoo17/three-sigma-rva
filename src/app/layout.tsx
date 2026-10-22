@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Sans } from "next/font/google";
+import Analytics from "@/components/Analytics";
 import Header from "@/components/Header";
 import "./globals.css";
 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-dvh font-sans">
         <Header />
         <main>{children}</main>
+        <Analytics />
       </body>
     </html>
   );

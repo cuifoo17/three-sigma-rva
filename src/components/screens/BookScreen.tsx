@@ -6,6 +6,7 @@ import CubeTwist from "@/components/screens/CubeTwist";
 import Screen, { ScreenTitle } from "@/components/screens/Screen";
 import { book, deckBook, footer, nav } from "@/content/deck";
 import { SPEED } from "@/components/screens/timing";
+import { track } from "@/lib/analytics";
 import { submitLead } from "@/lib/leads";
 import { choreograph, type Choreography } from "@/lib/rubiks";
 
@@ -168,12 +169,15 @@ export default function BookScreen() {
     // Save the lead first; the cube only turns once HQ has it.
     setSending(true);
     setSendError(null);
+    track("submit");
     const saved = await submitLead(values);
     setSending(false);
     if (!saved) {
+      track("failed");
       setSendError(book.error);
       return;
     }
+    track("saved");
     if (!ref.current) return;
     // Before anything moves: snapping off, scroll pinned, keyboard away.
     hold.current = holdScroll(() => ref.current);
@@ -282,6 +286,7 @@ export default function BookScreen() {
     <>
       <Screen
         id="book"
+        name="book"
         ref={ref}
         tone={done ? "sky" : "yellow"}
         fill={false}
