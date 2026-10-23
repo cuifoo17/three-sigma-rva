@@ -11,6 +11,8 @@
 // (an IntersectionObserver with a zero-height root band). Dwell pauses while
 // the tab is hidden.
 
+import { ownerBrowser } from "./owner";
+
 const base = process.env.NEXT_PUBLIC_LEADS_URL ?? "";
 const KEY = "ts_web_session";
 const HEARTBEAT_MS = 20_000;
@@ -162,7 +164,7 @@ export function touched(field: FormField) {
 /** Mounts the tracker. Returns a cleanup that detaches the listeners; the session itself survives a remount
  *  (React dev runs effects twice), so a second start carries on where the first left off. */
 export function start(): () => void {
-  if (!base) return () => {};
+  if (!base || ownerBrowser()) return () => {};
   if (!session) {
     session = load() ?? fresh();
     dirty = true;

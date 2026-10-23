@@ -2,31 +2,7 @@
 
 import { useEffect } from "react";
 import { PIXEL_ID } from "@/lib/pixel";
-
-// Owner opt-out: open the site once per browser with ?me=1 and that browser
-// never loads the pixel again (?me=0 turns it back on). The flag lives in
-// localStorage, so it has to be set separately in Safari, Chrome and the
-// Facebook / Instagram in-app browsers, and Safari drops it after seven days
-// without a tap on the site. Everyone else is untouched.
-const KEY = "ts_owner";
-
-/** True when this browser is the owner's. Handles ?me=1 / ?me=0 and strips the param from the URL. */
-function ownerBrowser(): boolean {
-  try {
-    const q = new URLSearchParams(location.search);
-    const me = q.get("me");
-    if (me === "1") localStorage.setItem(KEY, "1");
-    else if (me === "0") localStorage.removeItem(KEY);
-    if (me !== null) {
-      q.delete("me");
-      const search = q.toString();
-      history.replaceState(history.state, "", location.pathname + (search ? `?${search}` : "") + location.hash);
-    }
-    return localStorage.getItem(KEY) === "1";
-  } catch {
-    return false;
-  }
-}
+import { ownerBrowser } from "@/lib/owner";
 
 /** Meta's base code: defines the fbq queue, loads fbevents.js, inits the pixel and fires PageView. */
 function loadPixel() {
