@@ -3,7 +3,7 @@
 
 export const nav = {
   // "\n" is a forced line break on phones; one line from tablet width.
-  wordmark: "Gifted Teen\nAI Accelerator",
+  wordmark: "Future Ready\nAI Lab",
   cta: { label: "Book a\nConsultation", href: "#book" },
 };
 
