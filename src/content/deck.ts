@@ -167,9 +167,9 @@ export const enrolling = {
 };
 
 export const deckFit = {
-  header: "Is this right for your child?",
+  header: "Who the class is for",
   // The newline is a forced break on the screens page; elsewhere it collapses to a space.
-  intro: "The course is designed for the top 5% of\nproblem solvers. The kids who do best:",
+  intro: "The course is designed for the top 10% of\nhigh-achieving teens. The students who will get the most out of this course:",
   rows: [
     {
       title: "Pick things up quickly",
