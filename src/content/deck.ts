@@ -160,6 +160,7 @@ export const enrolling = {
     "1-hour classes held twice a week (Thanksgiving off).",
     "A maximum of 5 students per class.",
     "No coding experience necessary.",
+    "Teens will need access to a non-school computer.",
   ],
 
 };
