@@ -40,9 +40,10 @@ export default function FitScreen() {
       {/* overflow-x-clip: the slide-ins start outside the column and must not
           widen the page. */}
       {/* Pushed down so the title sits level with the teacher screen's: each
-          screen centres its own content and this one's is taller. 10px more
-          on phones, 52px more from md (measured 2026-10-27). */}
-      <div ref={ref} className="translate-y-[22px] overflow-x-clip md:translate-y-16">
+          screen centres its own content. 10px more on phones; from md the
+          floated block is shorter than the teacher's, so it's pulled up 37px
+          (both measured 2026-10-27). */}
+      <div ref={ref} className="translate-y-[22px] overflow-x-clip md:-translate-y-[37px]">
         <motion.div
           initial={STATIC_ENTRANCES ? false : { opacity: 0, y: -40 }}
           animate={on ? { opacity: 1, y: 0 } : undefined}
@@ -51,7 +52,13 @@ export default function FitScreen() {
           <ScreenTitle>{deckFit.header}</ScreenTitle>
         </motion.div>
 
+        {/* From md the art floats right and is pulled up into the title's
+            row (the title is one 40px line); the intro wraps beside it and
+            the list clears below, as on the teacher screen. Phones keep the
+            stacked layout. Art is 15% smaller from md (19.8rem to 16.83rem)
+            so the last row clears the screen on laptop heights. */}
         <motion.div
+          className="md:float-right md:-mt-10 md:mb-2 md:ml-6"
           initial={STATIC_ENTRANCES ? false : { opacity: 0, x: -80 }}
           animate={on ? { opacity: 1, x: 0 } : undefined}
           transition={t(HERO_AT, SLOW, glide)}
@@ -59,12 +66,12 @@ export default function FitScreen() {
           <Image
             src={fitArt}
             alt="A kid telling a parent about something they won"
-            sizes="(min-width: 768px) 22rem, 16rem"
-            className="ml-auto mt-4 w-[14.4rem] object-contain md:mt-6 md:w-[19.8rem]"
+            sizes="(min-width: 768px) 17rem, 16rem"
+            className="ml-auto mt-4 w-[14.4rem] object-contain md:mt-0 md:w-[16.83rem]"
           />
         </motion.div>
 
-        <p className="mt-[34px] text-base text-primary/70 md:text-lg">
+        <p className="mt-[34px] text-base text-primary/70 md:mt-6 md:text-lg">
           <StreamWords
             text={deckFit.intro}
             on={on}
@@ -74,7 +81,7 @@ export default function FitScreen() {
           />
         </p>
 
-        <ul className="mt-3 divide-y divide-primary/10 md:mt-4">
+        <ul className="mt-3 divide-y divide-primary/10 md:mt-4 md:clear-both">
           {deckFit.rows.map((r, i) => {
             const textAt = ROWS_AT + i * ROW_PERIOD;
             const checkAt = textAt + ROW_TEXT_DUR;
