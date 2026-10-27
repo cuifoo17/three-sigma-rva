@@ -25,19 +25,18 @@ export default function Screens() {
         </Screen>
       )}
 
-      {/* 2. About the teacher: title, photo, bullets animate in on a timed
-          sequence (see TeacherScreen). */}
-      <Screen id="about" name="teacher" tone="white">
-        <TeacherScreen />
-      </Screen>
-
-      {/* 3. What they'll walk away with: title, art, cards animate in on a
-          timed sequence (see OutcomesScreen). */}
+      {/* 2. What they'll walk away with + course contents. First screen
+          since 2026-10-27 (see OutcomesScreen). */}
       {/* Fixed height like the other screens: a min-height section relayouts
           when Safari's toolbar collapses mid-swipe, which stuttered the
           entrance. The smaller art fits one screen now. */}
       <Screen id="learn" name="outcomes" tone="sky">
         <OutcomesScreen />
+      </Screen>
+
+      {/* 3. About the teacher (see TeacherScreen). */}
+      <Screen id="about" name="teacher" tone="white">
+        <TeacherScreen />
       </Screen>
 
       {/* 4. Is this right for your child? */}

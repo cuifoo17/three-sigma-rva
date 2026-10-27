@@ -27,7 +27,7 @@ export default function StreamWords({
     <span key={i} className="contents">
       <motion.span
         className="inline-block"
-        initial={{ opacity: 0, y: 6 }}
+        initial={reduce ? false : { opacity: 0, y: 6 }}
         animate={on ? { opacity: 1, y: 0 } : undefined}
         transition={
           reduce

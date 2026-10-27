@@ -6,7 +6,7 @@ import { useRef } from "react";
 import CourseCarousel from "@/components/screens/CourseCarousel";
 import { ScreenTitle } from "@/components/screens/Screen";
 import StreamWords from "@/components/screens/StreamWords";
-import { easeOut, glide, SLOW, SPEED } from "@/components/screens/timing";
+import { easeOut, glide, SLOW, SPEED, STATIC_ENTRANCES } from "@/components/screens/timing";
 import { course, deckOutcomes } from "@/content/deck";
 import outcomesArt from "@/app/outcomes.png";
 
@@ -17,7 +17,7 @@ import outcomesArt from "@/app/outcomes.png";
 //         over 1s, 0.1s before the art lands
 //   3.2s  0.2s after that finishes, the lesson carousel items slide in from
 //         the left over 0.6s, each 0.1s after the one before it lands
-// Reduced motion renders everything static.
+// Reduced motion renders everything static, as does STATIC_ENTRANCES.
 // 0.8s longer than the other screens' entrances.
 const ENTER = SLOW + 0.8;
 const TITLE_AT = 0;
@@ -31,7 +31,7 @@ const CARD_GAP = 0.1;
 export default function OutcomesScreen() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotion() || STATIC_ENTRANCES;
   const on = reduce || inView;
   const t = (delay: number, duration: number, ease: Easing = easeOut) =>
     reduce ? { duration: 0 } : { delay: delay * SPEED, duration: duration * SPEED, ease };
@@ -43,7 +43,7 @@ export default function OutcomesScreen() {
       {/* No top margin: with the bigger Course Contents text the screen
           needs every px on a 664px Safari viewport. */}
       <motion.div
-        initial={{ opacity: 0, y: -40 }}
+        initial={STATIC_ENTRANCES ? false : { opacity: 0, y: -40 }}
         animate={on ? { opacity: 1, y: 0 } : undefined}
         transition={t(TITLE_AT, ENTER, glide)}
       >
@@ -56,7 +56,7 @@ export default function OutcomesScreen() {
         </ScreenTitle>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, x: -80 }}
+        initial={STATIC_ENTRANCES ? false : { opacity: 0, x: -80 }}
         animate={on ? { opacity: 1, x: 0 } : undefined}
         transition={t(ART_AT, ENTER, glide)}
       >
@@ -83,7 +83,7 @@ export default function OutcomesScreen() {
             (0.8em of the header), regular weight, kept on one line. */}
         <motion.span
           className="ml-2 whitespace-nowrap text-[0.8em] font-normal"
-          initial={{ opacity: 0, y: 6 }}
+          initial={STATIC_ENTRANCES ? false : { opacity: 0, y: 6 }}
           animate={on ? { opacity: 1, y: 0 } : undefined}
           transition={t(SUB_AT + SUB_DUR, 0.7)}
         >

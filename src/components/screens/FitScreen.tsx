@@ -1,7 +1,7 @@
 "use client";
 
 import { type Easing, motion, useInView, useReducedMotion } from "motion/react";
-import { easeOut, glide, SLOW, SPEED } from "@/components/screens/timing";
+import { easeOut, glide, SLOW, SPEED, STATIC_ENTRANCES } from "@/components/screens/timing";
 import Image from "next/image";
 import { useRef } from "react";
 import { ScreenTitle } from "@/components/screens/Screen";
@@ -15,7 +15,7 @@ import fitArt from "@/app/fit.jpg";
 //   1.2s   intro streams in one word at a time over 3s, 0.1s before the art lands
 //   4.4s   row 1 text comes in fast from the right; when it lands the check
 //         bounces in; 0.1s after that, row 2, and so on
-// Reduced motion renders everything static.
+// Reduced motion renders everything static, as does STATIC_ENTRANCES.
 const TITLE_AT = 0;
 const HERO_AT = 0.3;
 const INTRO_AT = HERO_AT + SLOW - 0.1;
@@ -29,7 +29,7 @@ const ROW_PERIOD = ROW_TEXT_DUR + CHECK_DUR + ROW_GAP;
 export default function FitScreen() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotion() || STATIC_ENTRANCES;
   const on = reduce || inView;
   // With reduced motion, every transition collapses to instant.
   const t = (delay: number, duration: number, ease: Easing = easeOut) =>
@@ -41,7 +41,7 @@ export default function FitScreen() {
           widen the page. */}
       <div ref={ref} className="translate-y-3 overflow-x-clip">
         <motion.div
-          initial={{ opacity: 0, y: -40 }}
+          initial={STATIC_ENTRANCES ? false : { opacity: 0, y: -40 }}
           animate={on ? { opacity: 1, y: 0 } : undefined}
           transition={t(TITLE_AT, SLOW, glide)}
         >
@@ -49,7 +49,7 @@ export default function FitScreen() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: -80 }}
+          initial={STATIC_ENTRANCES ? false : { opacity: 0, x: -80 }}
           animate={on ? { opacity: 1, x: 0 } : undefined}
           transition={t(HERO_AT, SLOW, glide)}
         >
@@ -79,7 +79,7 @@ export default function FitScreen() {
               <motion.li
                 key={r.title}
                 className="flex items-center gap-3 py-3.5 text-lg font-bold tracking-tight md:py-4 md:text-xl"
-                initial={{ opacity: 0 }}
+                initial={STATIC_ENTRANCES ? false : { opacity: 0 }}
                 animate={on ? { opacity: 1 } : undefined}
                 transition={t(textAt, ROW_TEXT_DUR)}
               >
@@ -92,7 +92,7 @@ export default function FitScreen() {
                   strokeWidth="3"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  initial={{ scale: 0 }}
+                  initial={STATIC_ENTRANCES ? false : { scale: 0 }}
                   animate={on ? { scale: reduce ? 1 : [0, 1.3, 1] } : undefined}
                   transition={
                     reduce
@@ -109,7 +109,7 @@ export default function FitScreen() {
                 </motion.svg>
                 <motion.span
                   className="block"
-                  initial={{ opacity: 0, x: 48 }}
+                  initial={STATIC_ENTRANCES ? false : { opacity: 0, x: 48 }}
                   animate={on ? { opacity: 1, x: 0 } : undefined}
                   transition={t(textAt, ROW_TEXT_DUR)}
                 >

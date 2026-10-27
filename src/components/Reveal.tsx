@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
-import { SPEED } from "@/components/screens/timing";
+import { SPEED, STATIC_ENTRANCES } from "@/components/screens/timing";
 
 // Fade-and-rise as a block enters the viewport. Plays once, never under 400ms,
 // and renders static for users who asked for reduced motion.
@@ -16,7 +16,7 @@ export default function Reveal({
   className?: string;
 }) {
   const reduce = useReducedMotion();
-  if (reduce) return <div className={className}>{children}</div>;
+  if (reduce || STATIC_ENTRANCES) return <div className={className}>{children}</div>;
   return (
     <motion.div
       className={className}

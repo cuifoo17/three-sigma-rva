@@ -4,7 +4,7 @@ import { type Easing, motion, useInView, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useRef } from "react";
 import { ScreenTitle } from "@/components/screens/Screen";
-import { easeOut, glide, SLOW, SPEED } from "@/components/screens/timing";
+import { easeOut, glide, SLOW, SPEED, STATIC_ENTRANCES } from "@/components/screens/timing";
 import { deckTeacher } from "@/content/deck";
 import headshot from "@/app/headshot.png";
 
@@ -13,12 +13,8 @@ import headshot from "@/app/headshot.png";
 //   0.3s  photo glides in from the left over 1s (as the fit art does)
 //   1.5s  0.2s after the photo lands, bullets slide in fast from the right,
 //         each 0.1s after the one before it lands (the fit rows minus the check)
-// Reduced motion renders everything static.
-//
-// STATIC (2026-10-27): the page opens on this screen, so it renders fully
-// laid out on first paint with no entrance. Flip to false to bring the
-// sequence back.
-const STATIC = true;
+// Reduced motion renders everything static, as does STATIC_ENTRANCES.
+const STATIC = STATIC_ENTRANCES;
 const TITLE_AT = 0;
 const PHOTO_AT = 0.3;
 const POINTS_AT = PHOTO_AT + SLOW + 0.2;
