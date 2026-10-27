@@ -39,7 +39,10 @@ export default function FitScreen() {
     <>
       {/* overflow-x-clip: the slide-ins start outside the column and must not
           widen the page. */}
-      <div ref={ref} className="translate-y-3 overflow-x-clip">
+      {/* Pushed down so the title sits level with the teacher screen's: each
+          screen centres its own content and this one's is taller. 10px more
+          on phones, 52px more from md (measured 2026-10-27). */}
+      <div ref={ref} className="translate-y-[22px] overflow-x-clip md:translate-y-16">
         <motion.div
           initial={STATIC_ENTRANCES ? false : { opacity: 0, y: -40 }}
           animate={on ? { opacity: 1, y: 0 } : undefined}
