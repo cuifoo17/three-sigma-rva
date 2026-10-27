@@ -159,8 +159,6 @@ export const enrolling = {
   faq: [
     "1-hour classes held twice a week (Thanksgiving off).",
     "A maximum of 5 students per class.",
-    "Every student is screened for aptitude. I'll explain more during the free consultation.",
-    "Cost is $1,000.",
     "No coding experience necessary.",
   ],
 
