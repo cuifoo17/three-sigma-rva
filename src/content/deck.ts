@@ -86,16 +86,16 @@ export const course = {
       body: "Students build and publish their first website from a single prompt in Claude Code. They see how fast an idea turns into something, and how much polish is still needed.",
     },
     {
+      title: "Product market fit",
+      body: "Students talk to real people about problems worth solving, then use what they hear to decide what to build. They leave with a clear idea and one sentence on who it's for.",
+    },
+    {
       title: "Tell me what I don't know",
       body: "Students have Claude walk them through every backend component of a website, then make product decisions based on their project's constraints. They leave being able to explain how their site works and defend the choices behind it.",
     },
     {
       title: "Hey Claude, let me teach you something",
       body: "Students write their first Claude skill, a reusable set of instructions that makes Claude work to their standards. They leave with a tool they can use on any future project.",
-    },
-    {
-      title: "Product market fit",
-      body: "Students talk to real people about problems worth solving, then use what they hear to decide what to build. They leave with a clear idea and one sentence on who it's for.",
     },
     {
       title: "Sign in with Google",
