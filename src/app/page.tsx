@@ -1,6 +1,5 @@
 import BookScreen from "@/components/screens/BookScreen";
 import EnrollScreen from "@/components/screens/EnrollScreen";
-import FitScreen from "@/components/screens/FitScreen";
 import HeroVideo from "@/components/screens/HeroVideo";
 import OutcomesScreen from "@/components/screens/OutcomesScreen";
 import TeacherScreen from "@/components/screens/TeacherScreen";
@@ -39,20 +38,13 @@ export default function Screens() {
         <TeacherScreen />
       </Screen>
 
-      {/* 4. Is this right for your child? */}
-      {/* Hero art plus a checklist, no pop-ups; every element animates into
-          place on a timed sequence (see FitScreen). */}
-      <Screen name="fit" tone="white">
-        <FitScreen />
-      </Screen>
-
-      {/* 5. Now enrolling: cohort table plus a short FAQ (see EnrollScreen).
+      {/* 4. Now enrolling: cohort table plus a short FAQ (see EnrollScreen).
           fill={false}: table plus five lines can run past a short phone. */}
       <Screen id="logistics" name="enroll" tone="navy" fill={false}>
         <EnrollScreen />
       </Screen>
 
-      {/* 6. Book a free call; sending twists the section like a Rubik's
+      {/* 5. Book a free call; sending twists the section like a Rubik's
           cube onto the thank-you (see BookScreen). */}
       <BookScreen />
     </div>

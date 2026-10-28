@@ -77,7 +77,7 @@ function FadeIn({ onDone }: { onDone: () => void }) {
     <div
       ref={ref}
       aria-hidden="true"
-      className="absolute inset-0 flex items-center justify-center bg-accent px-4 pt-18 pb-20 opacity-0 md:px-8"
+      className="absolute inset-0 flex items-start justify-center bg-accent px-4 pt-24 pb-12 opacity-0 md:px-8"
     >
       <div className="w-full max-w-xl md:max-w-2xl">
         <Thanks />

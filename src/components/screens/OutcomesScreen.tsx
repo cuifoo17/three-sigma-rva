@@ -39,9 +39,7 @@ export default function OutcomesScreen() {
   return (
     // overflow-x-clip: the slide-ins start outside the column and must not
     // widen the page.
-    <div ref={ref} className="-translate-y-2 overflow-x-clip">
-      {/* No top margin: with the bigger Course Contents text the screen
-          needs every px on a 664px Safari viewport. */}
+    <div ref={ref} className="overflow-x-clip">
       <motion.div
         initial={STATIC_ENTRANCES ? false : { opacity: 0, y: -40 }}
         animate={on ? { opacity: 1, y: 0 } : undefined}

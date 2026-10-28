@@ -164,28 +164,3 @@ export const enrolling = {
   ],
 
 };
-
-export const deckFit = {
-  header: "Who the class is for",
-  // The newline is a forced break on the screens page; elsewhere it collapses to a space.
-  intro: "The course is designed for the top 10% of\nhigh-achieving teens. The students who will get the most out of this course:",
-  rows: [
-    {
-      title: "Pick things up quickly",
-      body: "Tend to catch on quickly and don't need a lot of repetition before they're ready for the next step.",
-    },
-    {
-      title: "Solve problems creatively",
-      body: "Enjoy figuring things out and often find their own way to an answer rather than waiting to be shown.",
-    },
-    {
-      title: "Try, fail, and try again",
-      body: "Willing to get it wrong and go again, which is most of what building software actually is.",
-    },
-    {
-      title: "Excel in difficult classes",
-      body: "Comfortable in honors or AP classes, have skipped a grade, or are otherwise a step ahead of their grade level.",
-    },
-  ],
-  closing: "No coding experience required. Every student is pre-screened for aptitude.",
-};
