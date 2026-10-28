@@ -104,7 +104,7 @@ export const tutoring = {
 };
 
 export const book = {
-  header: "Fill out the form and I'll reach out for a consultation :)",
+  header: "Fill out the form and I'll reach out shortly with more information :)",
   fields: {
     name: "Name",
     email: "Email",

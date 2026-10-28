@@ -91,7 +91,7 @@ export const course = {
     },
     {
       title: "Tell me what I don't know",
-      body: "Students have Claude walk them through every backend component of a website, then make product decisions based on their project's constraints. They leave being able to explain how their site works and defend the choices behind it.",
+      body: "Students learn all of the moving parts of their project backends. They leave being confident in the engineering choices that underpin their project.",
     },
     {
       title: "Hey Claude, let me teach you something",
