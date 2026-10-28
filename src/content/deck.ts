@@ -71,51 +71,51 @@ export const deckOutcomes = {
 
 // Screens page only: the ten sessions, shown as a horizontal carousel under
 // "Course Contents" on the outcomes screen. Titles and bodies are the
-// founder's words.
+// founder's words (rewritten 2026-10-28 for the striver parent).
 export const course = {
   header: "Course Contents",
   // Sits beside the header, smaller and regular weight.
   note: "(No experience required)",
   lessons: [
     {
+      title: "The world's easiest coding language",
+      body: "Students learn how Claude Code works on their computer and how to give it clear instructions in plain English. They leave knowing the important commands and workflows.",
+    },
+    {
       title: "Hello world",
-      body: "Teens get their first taste of Claude Code by building a website with one prompt. This will serve as the baseline to improve upon for the rest of the course.",
+      body: "Students build and publish their first website from a single prompt in Claude Code. They see how fast an idea turns into something, and how much polish is still needed.",
     },
     {
       title: "Tell me what I don't know",
-      body: "Students ask Claude to explain the parts of their project they don't understand yet, then learn to weigh the trade-offs themselves and pick the right option for their situation.",
-    },
-    {
-      title: "Padding, pills, and corner radii",
-      body: "Students learn the basics of UI: spacing, type, color, and the small details that separate AI slop from an intentionally designed website.",
+      body: "Students have Claude explain every part of their first site they don't understand, then compare the options and choose between them. They leave able to make and defend their own technical decisions.",
     },
     {
       title: "Hey Claude, let me teach you something",
-      body: "Students write their first Claude skill: a set of instructions that teaches Claude how to do something their way, so the AI works to their standards, not the other way around.",
+      body: "Students write their first Claude skill, a reusable set of instructions that makes Claude work to their standards. They leave with a tool they can use on any future project.",
+    },
+    {
+      title: "Product market fit",
+      body: "Students talk to real people about problems worth solving, then use what they hear to decide what to build. They leave with a clear idea and one sentence on who it's for.",
     },
     {
       title: "Sign in with Google",
-      body: "Students learn how to use CLIs to integrate live databases into their projects. Their project stops being a demo and becomes something real people could sign up for.",
+      body: "Students connect a live database and Google sign-in to their project. It stops being a demo and becomes something a real person could sign up for and use.",
     },
     {
       title: "Lights, camera, Opus",
-      body: "Students learn how to use Opus 5.5 to make detailed motion graphics and animations within their project.",
+      body: "Students use Opus 5.5 to add motion graphics and animations to their site. They learn how to direct the model toward the look they want.",
     },
     {
-      title: "Magnum Fable",
-      body: "Students are empowered to dream big and add one final new integration or feature to their project.",
+      title: "Padding, pills, and corner radii",
+      body: "Students learn spacing, type, and color, and the small details that separate a generic AI-made site from a designed one. They apply it to their own site and see the before and after.",
     },
     {
-      title: "Less is more",
-      body: "Students are taught the value of restraint. Just because you can build an extra feature doesn't mean you should.",
+      title: "Your first line on the résumé",
+      body: "Students write up their project as a portfolio piece, with a short description and a live link. They leave with something they can put on a college application or send to an internship.",
     },
     {
       title: "Demo Day",
-      body: "Students present their projects to the whole class, who give constructive feedback after testing it live.",
-    },
-    {
-      title: "To Sol and beyond",
-      body: "Students receive a lesson on the state of AI, all the tools we haven't covered in the class, and how to responsibly use AI on their own outside of the class.",
+      body: "Each student presents their finished project to the class, and classmates test it live and give feedback. Every student leaves with a shipped project they can show anyone.",
     },
   ],
 };
