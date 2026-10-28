@@ -79,7 +79,7 @@ export const course = {
   lessons: [
     {
       title: "The world's easiest coding language",
-      body: "Students learn how Claude Code works on their computer and how to give it clear instructions in plain English. They leave knowing the important commands and workflows.",
+      body: "Students learn how Claude Code works on their computer and how to give it clear instructions in plain English. They leave knowing important commands and workflows that come up often.",
     },
     {
       title: "Hello world",
