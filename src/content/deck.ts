@@ -86,8 +86,8 @@ export const course = {
       body: "Students build and publish their first website from a single prompt in Claude Code. They see how fast an idea turns into something, and how much polish is still needed.",
     },
     {
-      title: "Product market fit",
-      body: "Students talk to real people about problems worth solving, then use what they hear to decide what to build. They leave with a clear idea and one sentence on who it's for.",
+      title: "The world is my oyster",
+      body: "Students see the many ways Claude Code can solve real-life problems. By the end of class, they settle on a project that helps them in their day-to-day life.",
     },
     {
       title: "Tell me what I don't know",
