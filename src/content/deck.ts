@@ -87,7 +87,7 @@ export const course = {
     },
     {
       title: "Tell me what I don't know",
-      body: "Students have Claude explain every part of their first site they don't understand, then compare the options and choose between them. They leave able to make and defend their own technical decisions.",
+      body: "Students have Claude walk them through every backend component of a website, then make product decisions based on their project's constraints. They leave being able to explain how their site works and defend the choices behind it.",
     },
     {
       title: "Hey Claude, let me teach you something",
